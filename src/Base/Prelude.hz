@@ -1,0 +1,31 @@
+module Base.Prelude
+( (.)
+, ($)
+
+, const
+, flip
+, id
+) where
+
+
+infixl 100 .
+def (.)     :: (b -> c) -> (a -> b) -> a -> c
+def (.) f g = \x -> f (g x)
+
+
+infixr 0 $
+def ($)     :: (a -> b) -> a -> b
+def ($) f a = f a
+
+
+def const     :: a -> b -> a
+def const a _ = a
+
+
+def flip       :: (a -> b -> c) -> b -> a -> c
+def flip f x y = f y x
+
+
+def id   :: a -> a
+def id a = a
+

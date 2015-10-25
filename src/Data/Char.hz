@@ -1,0 +1,7 @@
+module Data.Char
+( Char
+) where
+
+data Char {
+}
+

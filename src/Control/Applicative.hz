@@ -1,0 +1,36 @@
+module Control.Applicative
+( Applicative (..)
+
+, liftA
+, liftA2
+, liftA3
+) where
+
+import Data.Functor
+
+
+infixl 40 <*>
+infixl 40 *>
+
+
+class (Functor f) => Applicative f {
+  def pure :: a -> f a
+
+  def (<*>) :: f (a -> b) -> f a -> f b
+
+  def (*>)     :: f a -> f b -> f b
+  def (*>) a b = (id <$ a) <*> b
+}
+
+
+def liftA     :: (Applicative f) => (a -> b) -> f a -> f b
+def liftA f a = pure f <*> a
+
+
+def liftA2       :: (Applicative f) => (a -> b -> c) -> f a -> f b -> f c
+def liftA2 f a b = pure f <*> a <*> b
+
+
+def liftA3         :: (Applicative f) => (a -> b -> c -> d) -> f a -> f b -> f c -> f d
+def liftA3 f a b c = pure f <*> a <*> b <*> c
+

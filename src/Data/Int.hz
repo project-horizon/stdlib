@@ -1,0 +1,7 @@
+module Data.Int
+( Int
+) where
+
+type Int {
+}
+

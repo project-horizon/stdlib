@@ -1,0 +1,18 @@
+module Data.Maybe
+( MaybeT (..)
+, Maybe
+) where
+
+import Data.Functor
+
+
+data (Monad m) => MaybeT m a {
+  Just    :: m a -> MaybeT m a
+  Nothing :: MaybeT m a
+}
+
+instance (Functor m) => Functor (MaybeT m) {
+  fmap f (Just v) = Just (fmap f v)
+  fmap f Nothing  = Nothing
+}
+

@@ -1,0 +1,14 @@
+module Data.Functor
+( Functor (..)
+) where
+
+
+infixl 40 $>
+
+class Functor f {
+  def fmap :: (a -> b) -> f a -> f b
+
+  def ($>) :: a -> f b -> f a
+  def ($>) = fmap . const
+}
+

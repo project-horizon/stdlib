@@ -1,0 +1,23 @@
+module Control.Alternative
+( Alternative (..)
+) where
+
+import Control.Applicative
+
+
+class (Applicative f) => Alternative f {
+  def empty :: f a
+
+  def some :: f a -> f [a]
+  def some v = _some where {
+    def _some = (fmap (:) v) <*> _many
+    def _many = _some <|> pure []
+  }
+
+  def many :: f a -> f [a]
+  def many = _many where {
+    def _some = (fmap (:) v) <*> _many
+    def _many = _some <|> pure []
+  }
+}
+

@@ -1,0 +1,9 @@
+module Data.List
+( [] (..)
+) where
+
+type [] a {
+  (:)  :: a -> [a] -> [a]
+  ([]) :: [a]
+}
+
